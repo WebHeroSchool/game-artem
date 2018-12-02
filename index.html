@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700,800">
+    <title>Document</title>
+</head>
+<body>
+    <section class="game">
+      <header class="game-header">
+        <div class="game-bar">
+          <div class="game-bar__star">
+            <span class="game-bar__star-text">3</span>
+          </div>
+          <div class="game-bar__points">
+            <span class="game-bar__points-text">128</span>
+          </div>
+          <div class="game-bar__health">
+            <ul class="game-bar__health-list">
+              <li class="game-bar__health-item game-bar__health-item--on"></li>
+              <li class="game-bar__health-item game-bar__health-item--on"></li>
+              <li class="game-bar__health-item game-bar__health-item--off"></li>
+            </ul>
+          </div>
+        </div>
+        <nav class="game-menu">
+          <button class="game-menu__begin button" type="button">Начать</button>
+          <button class="game-menu__help button" type="button">?</button>
+        </nav>
+      </header>
+      <div class="game-zones-wrapper">
+        <div class="game-zones games-zones--three">
+            <div class="game-zones__item"></div>
+            <div class="game-zones__item game-zones__item--bottom"></div>
+            <div class="game-zones__item">🐭</div>
+        </div>
+        <div class="game-zones games-zones--two">
+            <div class="game-zones__item">🦁</div>
+            <div class="game-zones__item"></div>
+        </div>
+      </div>
+    </section>
+    <section class="modal">
+        <div class="modal__window game-over">
+            <span class="game-over__heading">игра завершена</span>
+            <span class="game-over__congrat">Поздравляем! Вы набрали: </span>
+            <span class="game-over__points">512</span>
+            <span class="game-over__points-word">очков!</span>
+            <button class="game-over__ok button button--ok" type="button">ок</button>
+          </div>
+          <div class="modal__window game-rules">
+            <span class="game-rules__heading">Правила игры</span>
+            <ol class="game-rules__list">
+              <li class="game-rules__rule">В одной из 5-ти норок в случайном порядке периодически появляется мышь 🐭и другие emoji 🐭🐼🐻🦊🐱🐱...</li>
+              <li class="game-rules__rule">Нужно поймать мышь. При клике по мыши игроку добавляется +10 очков. </li>
+              <li class="game-rules__rule">После каждой пятой пойманной мыши скорость её случайного появления увеличивается.</li>
+              <li class="game-rules__rule">Если клик был выполнен по другому emoji, то у игрока отнимается жизнь. Всего 3 жизни. Если жизни закончились, то игра останавливается.</li>
+            </ol>
+            <button class="game-rules__ok button button--ok" type="button">ок</button>
+          </div>
+    </section>
+</body>
+</html>
