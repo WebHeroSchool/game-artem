@@ -11,7 +11,7 @@ body {
   font-weight: 800;
 }
 
-.game {
+.wrapper {
   padding: 44px 49px;
   margin: 20px auto;
   max-width: 1440px;
@@ -21,7 +21,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.game-header {
+.header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -30,21 +30,21 @@ body {
 }
 
 @media (max-width: 760px) {
-  .game-header {
+  .header {
     flex-direction: column;
   }
-  .game-bar {
+  .bar {
     margin-bottom: 20px;
   }
 }
 
-.game-bar {
+.bar {
   position: relative;
   width: 293px;
   height: 136px;
 }
 
-.game-bar__star {
+.bar__star {
   position: absolute;
   width: 136px;
   height: 136px;
@@ -57,7 +57,7 @@ body {
   z-index: 2;
 }
 
-.game-bar__star-text {
+.bar__star-text {
   position: absolute;
   left: 61px;
   top: 58px;
@@ -65,7 +65,7 @@ body {
   font-size: 24px;
 }
 
-.game-bar__points {
+.bar__points {
   position: absolute;
   top: 17px;
   left: 61px;
@@ -79,7 +79,7 @@ body {
   border-radius: 50px;
 }
 
-.game-bar__points-text {
+.bar__points-text {
   font-size: 35px;
   font-weight: 700;
   color: white;
@@ -88,7 +88,7 @@ body {
   left: 100px;
 }
 
-.game-bar__health {
+.bar__health {
   position: absolute;
   top: 81px;
   left: 49px;
@@ -99,7 +99,7 @@ body {
   box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.25);
 }
 
-.game-bar__health-list {
+.bar__health-list {
   position: absolute;
   width: 77px;
   left: 98px;
@@ -111,21 +111,21 @@ body {
   justify-content: space-between;
 }
 
-.game-bar__health-item {
+.bar__health-item {
   width: 22px;
   height: 20px;
   background-repeat: no-repeat;
 }
 
-.game-bar__health-item--on {
+.bar__health-item--on {
   background-image: url("img/heart-on.png");
 }
 
-.game-bar__health-item--off {
+.bar__health-item--off {
   background-image: url("img/heart-off.png");
 }
 
-.game-menu {
+.menu {
   display: flex;
   justify-content: space-between;
   width: 325px;
@@ -142,35 +142,35 @@ body {
   border: 8px solid #FFFFFF;
 }
 
-.game-menu__begin {
+.menu__begin {
   padding: 17px 65px;
   text-transform: uppercase;
 }
 
-.game-menu__begin:hover {
+.menu__begin:hover {
   background-color: #27A8F3;
   color: white;
   cursor: pointer;
 }
 
-.game-menu__help {
+.menu__help {
   width: 73px;
   height: 73px;
   font-size: 30px;
 }
 
-.game-menu__help:hover {
+.menu__help:hover {
   cursor: pointer;
   background-color: #27A8F3;
   color: white;
 }
 
-.game-zones-wrapper {
+.zones-wrapper {
   max-width: 900px;
   margin: 0 auto;
 }
 
-.game-zones {
+.zones {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -178,7 +178,7 @@ body {
   margin-bottom: 45px;
 }
 
-.game-zones__item {
+.zones__item {
   width: 225px;
   height: 167px;
   background-color: #AE8348;
@@ -190,11 +190,11 @@ body {
   align-items: center;
 }
 
-.game-zones__item--bottom {
+.zones__item--bottom {
   margin-top: 50px;
 }
 
-.games-zones--two {
+.zones--two {
   width: 550px;
   margin: 0 auto;
 }
@@ -224,7 +224,7 @@ body {
 }
 
 .game-over__heading,
-.game-rules__heading {
+.rules__heading {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -273,7 +273,7 @@ body {
   font-size: 35px;
 }
 
-.game-rules__list {
+.rules__list {
   padding: 0;
   font-size: 20px;
   line-height: normal;
@@ -283,7 +283,7 @@ body {
   list-style-position: inside;
 }
 
-.game-rules__rule {
+.rules__rule {
   margin-bottom: 10px;
   padding-left: 11px;
 }
@@ -293,6 +293,6 @@ li::first-letter {
 }
 
 .game-over, 
-.game-rules {
+.rules {
   display: none;
 }
