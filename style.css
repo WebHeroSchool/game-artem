@@ -1,0 +1,298 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+}
+
+.wrapper {
+  padding: 44px 49px;
+  margin: 20px auto;
+  max-width: 1440px;
+  height: 900px;
+  background-image: url("img/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 120px;
+}
+
+@media (max-width: 760px) {
+  .header {
+    flex-direction: column;
+  }
+  .bar {
+    margin-bottom: 20px;
+  }
+}
+
+.bar {
+  position: relative;
+  width: 293px;
+  height: 136px;
+}
+
+.bar__star {
+  position: absolute;
+  width: 136px;
+  height: 136px;
+  border-radius: 50%;
+  background-color: white;
+  background-image: url("img/star.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.09);
+  z-index: 2;
+}
+
+.bar__star-text {
+  position: absolute;
+  left: 61px;
+  top: 58px;
+  color: white;
+  font-size: 24px;
+}
+
+.bar__points {
+  position: absolute;
+  top: 17px;
+  left: 61px;
+  width: 232px;
+  height: 70px;
+  background-color: blue;
+  z-index: 1;
+  border: 10px solid white;
+  background-color: #A0B4BE;
+  box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+}
+
+.bar__points-text {
+  font-size: 35px;
+  font-weight: 700;
+  color: white;
+  position: absolute;
+  top: 5px;
+  left: 100px;
+}
+
+.bar__health {
+  position: absolute;
+  top: 81px;
+  left: 49px;
+  width: 193px;
+  height: 46px;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.bar__health-list {
+  position: absolute;
+  width: 77px;
+  left: 98px;
+  top: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bar__health-item {
+  width: 22px;
+  height: 20px;
+  background-repeat: no-repeat;
+}
+
+.bar__health-item--on {
+  background-image: url("img/heart-on.png");
+}
+
+.bar__health-item--off {
+  background-image: url("img/heart-off.png");
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  width: 325px;
+  margin-top: -10px;
+}
+
+.button {
+  font-size: 20px;
+  font-weight: 800;
+  color: #27A8F3;
+  border: none;
+  background-color: white;
+  border-radius: 50px;
+  border: 8px solid #FFFFFF;
+}
+
+.menu__begin {
+  padding: 17px 65px;
+  text-transform: uppercase;
+}
+
+.menu__begin:hover {
+  background-color: #27A8F3;
+  color: white;
+  cursor: pointer;
+}
+
+.menu__help {
+  width: 73px;
+  height: 73px;
+  font-size: 30px;
+}
+
+.menu__help:hover {
+  cursor: pointer;
+  background-color: #27A8F3;
+  color: white;
+}
+
+.zones-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.zones {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-bottom: 45px;
+}
+
+.zones__item {
+  width: 225px;
+  height: 167px;
+  background-color: #AE8348;
+  box-shadow: inset 0px 9px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  font-size: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zones__item--bottom {
+  margin-top: 50px;
+}
+
+.zones--two {
+  width: 550px;
+  margin: 0 auto;
+}
+
+.body {
+  position: relative;
+}
+
+.modal__window {
+  width: 820px;
+  height: 500px;
+  color: white;
+  background-color: #27A8F3;
+  border: 23px solid #FFFFFF;
+  border-radius: 65px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -42px;
+}
+
+.game-over__heading,
+.rules__heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 517px;
+  height: 96px;
+  color: #27A8F3;
+  background-color: white;
+  border-radius: 65px;
+  text-transform: uppercase;
+  font-size: 35px;
+  margin-top: -65px;
+  margin-bottom: 23px;
+}
+
+.game-over__congrat {
+  font-size: 29px;
+  margin-bottom: 40px;
+}
+
+.game-over__points {
+  font-size: 160px;
+  line-height: 160px;
+  margin-bottom: -20px;
+}
+
+.game-over__points-word {
+  font-size: 70px;
+}
+
+.button--ok {
+  width: 260px;
+  height: 76px;
+}
+
+.button--ok:hover {
+  cursor: pointer;
+  background-color: #FFC700;
+}
+
+.button--ok {
+  margin-top: auto;
+  margin-bottom: -53px;
+  text-transform: uppercase;
+  color: white;
+  background-color: #FFE500;
+  font-size: 35px;
+}
+
+.rules__list {
+  padding: 0;
+  font-size: 20px;
+  line-height: normal;
+  width: 705px;
+  margin-left: -12px;
+  margin-top: 42px;
+  list-style-position: inside;
+}
+
+.rules__rule {
+  margin-bottom: 10px;
+  padding-left: 11px;
+}
+
+li::first-letter {
+  padding-left: 13px;
+}
+
+.game-over, 
+.rules {
+  display: none;
+}
