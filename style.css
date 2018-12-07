@@ -184,10 +184,19 @@ body {
   background-color: #AE8348;
   box-shadow: inset 0px 9px 10px rgba(0, 0, 0, 0.2);
   border-radius: 50%;
-  font-size: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.zones__emoji {
+  font-size: 160px;
+  transition: all 2s ease;
+}
+
+.animation {
+  transform: translateY(-40px);
+  opacity: 0;
 }
 
 .zones__item--bottom {
