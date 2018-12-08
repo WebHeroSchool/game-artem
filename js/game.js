@@ -28,14 +28,18 @@ setInterval(function () {
   hole.classList.add('animation');
   
   // добавляем обработчик по клику для проверки не мышь ли это
-  hole.addEventListener('click', function(evt) {
-    console.log("is Mouse: ", isMouse(evt.target.innerHTML))
-  });
+  hole.addEventListener('click', emojeClickHandler);
 
   // после отработки анимации очищаем хтмл элемент и убираем цсс класс
-  hole.addEventListener("transitionend", function() {
-    hole.innerHTML = "";
-    hole.classList.remove('animation');
-  }, false);
+  hole.addEventListener("transitionend", emojeTransitionHandler, false);
 
 }, period);
+
+function emojeClickHandler(evt) {
+  console.log("is Mouse: ", isMouse(evt.target.innerHTML))
+}
+
+function emojeTransitionHandler() {
+  this.innerHTML = "";
+  this.classList.remove('animation');
+}
