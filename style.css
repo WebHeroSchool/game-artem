@@ -191,12 +191,13 @@ body {
 
 .zones__emoji {
   font-size: 160px;
-  transition: all 2s ease;
+  transition: all 0.8s ease;
+  opacity: 0;
 }
 
 .animation {
   transform: translateY(-40px);
-  opacity: 0;
+  opacity: 1;
 }
 
 .zones__item--bottom {

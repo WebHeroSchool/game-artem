@@ -1,45 +1,46 @@
 'use strict'
 
-var emojes = ['🐭', '🐼', '🐻', '🦊', '🐱', '🐮', '🦁', '🐽', '🐨', '🐰', '🐯'];
-var holes = document.querySelectorAll('.zones__emoji');
+const emojes = ['🐭', '🐼', '🐻', '🦊', '🐱', '🐮', '🦁', '🐽', '🐨', '🐰', '🐯'];
+const holes = document.querySelectorAll('.zones__emoji');
 
-function getRandomHole() {
-  return Math.floor (Math.random() * 5);
+// in ms (1000 ms = 1 second)
+let periodAnimation = 800;
+
+let lastHole;
+function getRandomHole(holes) {
+  const indexHole = Math.floor (Math.random() * holes.length);
+  const hole = holes[indexHole];
+  if (hole === lastHole) {
+    return getRandomHole(holes);
+  }
+  lastHole = hole;
+  return hole;
 }
 
 function getRandomEmoje() {
-  return Math.floor (Math.random() * emojes.length);
+  const indexEmoje = Math.floor (Math.random() * emojes.length);
+  const emoje = emojes[indexEmoje];
+  return emoje;
 }
 
 function isMouse(item) {
   return item === '🐭';
 }
 
-// с какой частотой показывать эмоджи, сейчас 3 секунды
-var period = 3000;
-
-setInterval(function () {
-  // при каждом запуске получаем случайную нору и случайное эмоджи
-  var hole = holes[getRandomHole()];
-  var emoje = emojes[getRandomEmoje()];
-  
-  // кладем эмоджи в хтмл и вешаем цсс класс для анимации
-  hole.innerHTML = emoje;
-  hole.classList.add('animation');
-  
-  // добавляем обработчик по клику для проверки не мышь ли это
-  hole.addEventListener('click', emojeClickHandler);
-
-  // после отработки анимации очищаем хтмл элемент и убираем цсс класс
-  hole.addEventListener("transitionend", emojeTransitionHandler, false);
-
-}, period);
-
 function emojeClickHandler(evt) {
-  console.log("is Mouse: ", isMouse(evt.target.innerHTML))
+  console.log("is Mouse: ", isMouse(evt.target.innerHTML));
 }
 
-function emojeTransitionHandler() {
-  this.innerHTML = "";
-  this.classList.remove('animation');
+function appearingOfEmoje() {
+  const time = periodAnimation;
+  const hole = getRandomHole(holes);
+  hole.addEventListener('click', emojeClickHandler);
+  hole.innerHTML = getRandomEmoje();
+  hole.classList.add('animation');
+  setTimeout(()=> {
+    hole.classList.remove('animation')
+  }, time);
 }
+
+let periodBetweenEmojeAppearing = 1200;
+setInterval(appearingOfEmoje, periodBetweenEmojeAppearing);
