@@ -115,14 +115,11 @@ body {
   width: 22px;
   height: 20px;
   background-repeat: no-repeat;
+  background-image: url("img/heart-off.png");
 }
 
 .bar__health-item--on {
   background-image: url("img/heart-on.png");
-}
-
-.bar__health-item--off {
-  background-image: url("img/heart-off.png");
 }
 
 .menu {
@@ -191,7 +188,7 @@ body {
 
 .zones__emoji {
   font-size: 160px;
-  transition: all 0.8s ease;
+  transition: all 0.2s ease;
   opacity: 0;
 }
 
