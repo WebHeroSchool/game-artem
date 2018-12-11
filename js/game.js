@@ -8,7 +8,7 @@ class Game {
     // this.emojes = ['🐭', '🐼', '🐻', '🦊', '🐱', '🐮', '🦁', '🐽', '🐨', '🐰', '🐯'];
     this.holes = document.querySelectorAll('.zones__emoji');
     this.lastHole;
-    this.speed = 2000;
+    this.speed = 2100;
   }
   setAllLifes() {
     let lifesElements = document.querySelectorAll('.bar__health-item');
@@ -40,7 +40,7 @@ class Game {
     this.pointsElement = document.querySelector('.bar__points-text');
     this.pointsElement.innerHTML = this.points;
   }
-  setPlusPoints(num) {
+  setPlusPoints(num) { 
     this.points = this.points + num;
     this.pointsElement = document.querySelector('.bar__points-text');
     this.pointsElement.innerHTML = this.points;
@@ -59,8 +59,15 @@ class Game {
     }, this.speed);
   }
   emojeClickHandler(evt) {
+    console.log('click')
     if (evt.target.innerHTML === '🐭') {
-      this.setPlusPoints(10);
+      game.setPlusPoints.call(game, 10); // сколько добавлять очков, можно поменять
+      if (game.points % 10 === 0) {
+      game.setMoreSpeed.call(game, 300); // на сколько убавлять скорость
+      console.log(game.speed);
+      }
+    } else {
+      game.setRemoveLife.call(game);
     }
   }
   startGame() {
