@@ -9,6 +9,9 @@ class Game {
     this.holes = document.querySelectorAll('.zones__emoji');
     this.lastHole;
     this.speed = 2100;
+    this.emojeClickHandler = this.emojeClickHandler.bind(this);
+    this.appearingOfEmoje = this.appearingOfEmoje.bind(this);
+    this.timerId = setTimeout(this.appearingOfEmoje, this.speed);
   }
   setAllLifes() {
     let lifesElements = document.querySelectorAll('.bar__health-item');
@@ -50,33 +53,52 @@ class Game {
   }
   appearingOfEmoje() {
     let holeCurrent = this.getRandomHole();
-    holeCurrent.addEventListener('click', this.emojeClickHandler);
+    holeCurrent.classList.remove('disappearing');
     holeCurrent.innerHTML = this.getRandomEmoje();
     holeCurrent.classList.add('animation');
+    holeCurrent.addEventListener('click', this.emojeClickHandler);
     setTimeout(()=> {
       holeCurrent.classList.remove('animation');
-      holeCurrent.removeEventListener('click', this.emojeClickHandler, false);
+      holeCurrent.removeEventListener('click', this.emojeClickHandler, false)
     }, this.speed);
+    if (this.lifes > 0) {
+      this.timerId = setTimeout(this.appearingOfEmoje, this.speed);
+    }
   }
   emojeClickHandler(evt) {
-    console.log('click')
+    evt.target.classList.add('disappearing');
+    console.log(evt);
     if (evt.target.innerHTML === '🐭') {
-      game.setPlusPoints.call(game, 10); // сколько добавлять очков, можно поменять
-      if (game.points % 10 === 0) {
-      game.setMoreSpeed.call(game, 300); // на сколько убавлять скорость
-      console.log(game.speed);
+      this.setPlusPoints(10);
+      // увеличение скорости игры после 5 мыши
+      if (this.points % 50 === 0) {
+      // на сколько убавлять скорость
+      this.setMoreSpeed(200);
+      console.log(this.speed);
       }
     } else {
-      game.setRemoveLife.call(game);
+      this.setRemoveLife();
     }
   }
   startGame() {
     this.setAllLifes();
     this.setStartPoints();
-    setInterval(() => this.appearingOfEmoje(), this.speed);
   }
 }
 
 // стартуем!
 let game = new Game;
 game.startGame();
+
+// открытие, закрытие правил игры
+let modalWindow = document.querySelector('.rules');
+let modalOpenButton = document.querySelector('.menu__help');
+let modalCloseButton = modalWindow.querySelector('.rules__ok');
+
+modalOpenButton.addEventListener('click', ()=> {
+  modalWindow.classList.add('modal__window--show');
+})
+
+modalCloseButton.addEventListener('click', ()=> {
+  modalWindow.classList.remove('modal__window--show');
+})

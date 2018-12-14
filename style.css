@@ -217,6 +217,7 @@ body {
   background-color: #27A8F3;
   border: 23px solid #FFFFFF;
   border-radius: 65px;
+  z-index: 2;
 
   position: absolute;
   top: 50%;
@@ -302,4 +303,12 @@ li::first-letter {
 .game-over, 
 .rules {
   display: none;
+}
+
+.disappearing {
+  display: none;
+}
+
+.modal__window--show {
+  display: flex;
 }
