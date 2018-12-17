@@ -22,6 +22,9 @@
       this.lifesElements = document.querySelectorAll('.bar__health-item');
       this.availableLifes = document.querySelectorAll('.bar__health-item--on');
       this.pointsElement = document.querySelector('.bar__points-text');
+      this.gameOverModal = document.querySelector('.game-over');
+      this.pointsElementFinal = document.querySelector('.game-over__points');
+      this.closeGameOver = document.querySelector('.game-over__ok');
     }
     // метод для увеличения шансов появления мыши
     // изначально вероятность 1/11, метод увеличивает до 12/22
@@ -84,6 +87,8 @@
       if (this.lifes > 0) {
         holeCurrent.classList.add('animation');
         this.timerId = setTimeout(this.appearingOfEmoje, this.speed);
+      } else {
+        this.gameOver();
       }
       holeCurrent.addEventListener('click', this.emojeClickHandler);
       setTimeout(()=> {
@@ -101,6 +106,15 @@
       } else {
           this.setRemoveLife();
       }
+    }
+    gameOver() {
+      this.pointsElementFinal.innerHTML = this.points;
+      this.gameOverModal.classList.add('modal__window--show');
+      this.closeGameOver.addEventListener('click', () => {
+        this.gameOverModal.classList.remove('modal__window--show');
+        this.setStartPoints();
+        this.speedLevelElement.innerHTML = "1";
+      })
     }
     startGame() {
       // this.increaseChanceOf();
@@ -122,6 +136,7 @@
   modalCloseButton.addEventListener('click', ()=> {
     modalWindow.classList.remove('modal__window--show');
   })
+  
   
   // начало игры
   buttonStart.addEventListener('click', ()=> {
