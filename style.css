@@ -44,23 +44,34 @@ body {
   height: 136px;
 }
 
-.bar__star {
+.bar__circle {
   position: absolute;
   width: 136px;
   height: 136px;
   border-radius: 50%;
   background-color: white;
-  background-image: url("img/star.png");
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
   box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.09);
   z-index: 2;
 }
 
+.bar__star {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 71px;
+  height: 69px;
+  background-image: url("img/star.png");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  transition: all 1s ease-in-out;
+  z-index: 3;
+}
+
 .bar__star-text {
   position: absolute;
-  left: 61px;
-  top: 58px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   color: white;
   font-size: 24px;
 }
@@ -115,14 +126,11 @@ body {
   width: 22px;
   height: 20px;
   background-repeat: no-repeat;
+  background-image: url("img/heart-off.png");
 }
 
 .bar__health-item--on {
   background-image: url("img/heart-on.png");
-}
-
-.bar__health-item--off {
-  background-image: url("img/heart-off.png");
 }
 
 .menu {
@@ -191,8 +199,9 @@ body {
 
 .zones__emoji {
   font-size: 160px;
-  transition: all 0.8s ease;
+  transition: all 0.1s ease;
   opacity: 0;
+  cursor: pointer;
 }
 
 .animation {
@@ -220,6 +229,7 @@ body {
   background-color: #27A8F3;
   border: 23px solid #FFFFFF;
   border-radius: 65px;
+  z-index: 2;
 
   position: absolute;
   top: 50%;
@@ -305,4 +315,23 @@ li::first-letter {
 .game-over, 
 .rules {
   display: none;
+}
+
+.disappearing {
+  display: none;
+}
+
+.modal__window--show {
+  display: flex;
+}
+
+.star-animation {
+  animation-name: levelUp;
+  animation-duration: 0.8s;
+}
+
+@keyframes levelUp {
+  40% {
+    transform: translateY(-30px) rotateY(180deg);
+  }
 }
