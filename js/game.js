@@ -6,8 +6,7 @@
       // this.isRunning = false;
       this.lifes = 0;
       this.points = 0;
-      this.emojes = ['🐭', '🐼'];
-      // this.emojes = ['🐭', '🐼', '🐻', '🦊', '🐱', '🐮', '🦁', '🐽', '🐨', '🐰', '🐯'];
+      this.emojes = ['🐭', '🐼', '🐻', '🦊', '🐱', '🐮', '🦁', '🐽', '🐨', '🐰', '🐯'];
       this.lastHole;
       this.speed = 2100;
       this.speedLevel = 1;
@@ -100,8 +99,9 @@
       evt.target.classList.add('disappearing');
       if (evt.target.innerHTML === '🐭') {
         this.setPlusPoints(10);
-        if (this.points % 10 === 0) {
+        if (this.points % 50 === 0) {
           this.setMoreSpeed(200);
+          console.log(this.speed)
         }
       } else {
           this.setRemoveLife();
@@ -117,7 +117,7 @@
       })
     }
     startGame() {
-      // this.increaseChanceOf();
+      this.increaseChanceOf();
       this.setAllLifes(); // <-- start here (1)
       this.setStartPoints();
     }
