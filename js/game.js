@@ -6,8 +6,7 @@
       // this.isRunning = false;
       this.lifes = 0;
       this.points = 0;
-      this.emojes = ['🐭', '🐼'];
-      // this.emojes = ['🐭', '🐼', '🐻', '🦊', '🐱', '🐮', '🦁', '🐽', '🐨', '🐰', '🐯'];
+      this.emojes = ['🐭', '🐼', '🐻', '🦊', '🐱', '🐮', '🦁', '🐽', '🐨', '🐰', '🐯'];
       this.lastHole;
       this.speed = 2100;
       this.speedLevel = 1;
@@ -22,6 +21,9 @@
       this.lifesElements = document.querySelectorAll('.bar__health-item');
       this.availableLifes = document.querySelectorAll('.bar__health-item--on');
       this.pointsElement = document.querySelector('.bar__points-text');
+      this.gameOverModal = document.querySelector('.game-over');
+      this.pointsElementFinal = document.querySelector('.game-over__points');
+      this.closeGameOver = document.querySelector('.game-over__ok');
     }
     // метод для увеличения шансов появления мыши
     // изначально вероятность 1/11, метод увеличивает до 12/22
@@ -84,6 +86,8 @@
       if (this.lifes > 0) {
         holeCurrent.classList.add('animation');
         this.timerId = setTimeout(this.appearingOfEmoje, this.speed);
+      } else {
+        this.gameOver();
       }
       holeCurrent.addEventListener('click', this.emojeClickHandler);
       setTimeout(()=> {
@@ -95,15 +99,25 @@
       evt.target.classList.add('disappearing');
       if (evt.target.innerHTML === '🐭') {
         this.setPlusPoints(10);
-        if (this.points % 10 === 0) {
+        if (this.points % 50 === 0) {
           this.setMoreSpeed(200);
         }
       } else {
           this.setRemoveLife();
       }
     }
+    gameOver() {
+      this.pointsElementFinal.innerHTML = this.points;
+      this.gameOverModal.classList.add('modal__window--show');
+      this.closeGameOver.addEventListener('click', () => {
+        this.gameOverModal.classList.remove('modal__window--show');
+        this.setStartPoints();
+        this.speedLevelElement.innerHTML = "1";
+        buttonStart.addEventListener('click', onStartButtonClick);
+      })
+    }
     startGame() {
-      // this.increaseChanceOf();
+      this.increaseChanceOf();
       this.setAllLifes(); // <-- start here (1)
       this.setStartPoints();
     }
@@ -123,9 +137,11 @@
     modalWindow.classList.remove('modal__window--show');
   })
   
-  // начало игры
-  buttonStart.addEventListener('click', ()=> {
+  function onStartButtonClick () {
+    buttonStart.removeEventListener('click', onStartButtonClick, false);
     let game = new Game;
     game.startGame();
-  })
+  }
+  // начало игры
+  buttonStart.addEventListener('click', onStartButtonClick);
 }());
