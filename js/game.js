@@ -101,7 +101,6 @@
         this.setPlusPoints(10);
         if (this.points % 50 === 0) {
           this.setMoreSpeed(200);
-          console.log(this.speed)
         }
       } else {
           this.setRemoveLife();
@@ -114,6 +113,7 @@
         this.gameOverModal.classList.remove('modal__window--show');
         this.setStartPoints();
         this.speedLevelElement.innerHTML = "1";
+        buttonStart.addEventListener('click', onStartButtonClick);
       })
     }
     startGame() {
@@ -137,10 +137,11 @@
     modalWindow.classList.remove('modal__window--show');
   })
   
-  
-  // начало игры
-  buttonStart.addEventListener('click', ()=> {
+  function onStartButtonClick () {
+    buttonStart.removeEventListener('click', onStartButtonClick, false);
     let game = new Game;
     game.startGame();
-  })
+  }
+  // начало игры
+  buttonStart.addEventListener('click', onStartButtonClick);
 }());
